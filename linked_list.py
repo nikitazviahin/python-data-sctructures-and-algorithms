@@ -1,7 +1,8 @@
 class Node:
-    def __init__(self, data=None, next=None):
+    def __init__(self, data=None, next=None, prev=None):
         self.data = data
         self.next = next
+        self.prev = prev
 
 
 class LinkedList:
@@ -114,23 +115,22 @@ class LinkedList:
                 break
             itr = itr.next
 
+
+
                 
         
 if __name__ == '__main__':
     ll = LinkedList()
-    ll.insert_values([1,'bla',{"bla": 2}, [1,2,3]])
+    ll.insert_values(["banana","mango","grapes","orange"])
     ll.print()
-    ll.insert_at(0, 'first')
+    ll.insert_after_value("mango","apple") # insert apple after mango
     ll.print()
-    ll.insert_at(3, 'fourth')
+    ll.remove_by_value("orange") # remove orange from linked list
     ll.print()
-    ll.remove_at(2)
+    ll.remove_by_value("figs")
     ll.print()
-    ll.insert_at_beggining('(-_-)')
-    ll.print()
-    ll.insert_at_end('(0_0)')
-    ll.print()
-    ll.insert_after_value(1, '(-----------)')
-    ll.print()
-    ll.remove_by_value('(-_-)')
+    ll.remove_by_value("banana")
+    ll.remove_by_value("mango")
+    ll.remove_by_value("apple")
+    ll.remove_by_value("grapes")
     ll.print()
