@@ -83,10 +83,42 @@ class LinkedList:
 
             itr = itr.next
             count += 1
+    #---------------
+    def insert_after_value(self, data_after, data_to_insert):
+        if self.head == None:
+            return
+
+        if self.head.data == data_after:
+            self.head.next = Node(data_to_insert, self.head.next)
+
+        itr = self.head
+        while itr:
+            if itr.data == data_after:
+                itr.next = Node(data_to_insert, itr.next)
+                break
+
+            itr = itr.next
+    #---------------
+    def remove_by_value(self, data):
+        if self.head == None:
+            return
+        
+        if self.head.data == data:
+            self.head = self.head.next
+            return
+
+        itr = self.head
+        while itr.next:
+            if itr.next.data == data:
+                itr.next = itr.next.next
+                break
+            itr = itr.next
+
+                
         
 if __name__ == '__main__':
     ll = LinkedList()
-    ll.insert_values(['123','bla',{"bla": 2}, [1,2,3]])
+    ll.insert_values([1,'bla',{"bla": 2}, [1,2,3]])
     ll.print()
     ll.insert_at(0, 'first')
     ll.print()
@@ -97,4 +129,8 @@ if __name__ == '__main__':
     ll.insert_at_beggining('(-_-)')
     ll.print()
     ll.insert_at_end('(0_0)')
+    ll.print()
+    ll.insert_after_value(1, '(-----------)')
+    ll.print()
+    ll.remove_by_value('(-_-)')
     ll.print()
