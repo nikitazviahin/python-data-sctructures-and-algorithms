@@ -27,13 +27,31 @@ class BinarySearchTreeNode:
         # visit left tree
         if self.left:
             elements += self.left.in_order_traversal()
-
         # visit base node
         elements.append(self.data)
-
         # visit right tree
         if self.right:
             elements += self.right.in_order_traversal()
+
+        return elements
+
+    def pre_order_traversal(self):
+        elements = [self.data]
+        if self.left:
+            elements += self.left.pre_order_traversal()
+        if self.right:
+            elements += self.right.pre_order_traversal()
+        
+        return elements
+
+    def post_order_traversal(self):
+        elements = []
+        if self.left:
+            elements += self.left.post_order_traversal()
+        if self.right:
+            elements += self.right.post_order_traversal()
+
+        elements.append(self.data)
 
         return elements
     
@@ -55,6 +73,25 @@ class BinarySearchTreeNode:
             else:
                 return False
 
+    def find_min(self):
+        if self.left is None:
+            return self.data
+        
+        return self.left.find_min()
+
+    def find_max(self):
+        if self.right is None:
+            return self.data
+        
+        return self.right.find_max()
+
+    def calculate_sum(self):
+        left_sum = self.left.calculate_sum() if self.left else 0
+        right_sum = self.right.calculate_sum() if self.right else 0
+
+        return self.data + left_sum + right_sum
+
+
 
 
 #helper method for building the tree
@@ -68,7 +105,16 @@ def build_tree(elements):
 
 if __name__ == "__main__":
     numbers = [12,43,123,3,1,2,34,555,88,125,10,10,12]
+    cities = ['Kyiv', 'London', 'Stockholm', 'Lviv', 'Istanbul']
     numbers_tree = build_tree(numbers)
+    cities_tree = build_tree(cities)
     print(numbers_tree.in_order_traversal())
+    print(numbers_tree.pre_order_traversal())
+    print(numbers_tree.post_order_traversal())
+    print(cities_tree.in_order_traversal())
     print(numbers_tree.search(1111))
+    print(numbers_tree.find_min())
+    print(numbers_tree.find_max())
+    print(numbers_tree.calculate_sum())
+
         
