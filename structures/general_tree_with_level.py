@@ -1,4 +1,3 @@
-
 class TreeNode:
     def __init__(self, data):
         self.data = data
@@ -66,4 +65,6 @@ def build_location_tree():
 
 if __name__ == '__main__':
     root_node = build_location_tree()
-    root_node.
+    root_node.print_tree(1)
+    root_node.print_tree(2)
+    root_node.print_tree(3)
