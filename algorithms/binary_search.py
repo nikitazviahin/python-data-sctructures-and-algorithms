@@ -50,6 +50,7 @@ def binary_search_recursive(numbers_list, number_to_find, left_index, right_inde
 
     return binary_search_recursive(numbers_list, number_to_find, left_index, right_index)
 
+@time_it
 def find_all_occurances(numbers, number_to_find):
     index = binary_search(numbers, number_to_find)
     indices = [index]
@@ -74,14 +75,12 @@ def find_all_occurances(numbers, number_to_find):
            
 
 if __name__ == "__main__":
-    # numbers_list = [12,5,6,11,4,567,123,45]
-    # number_to_find = 12
 
     numbers_list = [1,2,3,4,5,5,5]
     number_to_find = 5
 
-    index_lin = linear_search(numbers_list, number_to_find) #~450 miliseconds
-    index_bin = binary_search(numbers_list, number_to_find) #0.01 milisecond
+    index_lin = linear_search(numbers_list, number_to_find)
+    index_bin = binary_search(numbers_list, number_to_find) 
     index_bin_rec = binary_search_recursive(numbers_list, number_to_find, 0, len(numbers_list)) 
     indeces = find_all_occurances(numbers_list, number_to_find)
     print(f"Number found at {index_lin} using linear search")
